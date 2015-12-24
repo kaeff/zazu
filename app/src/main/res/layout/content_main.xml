@@ -10,10 +10,26 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="zazu.kaeff.net.zazu.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:showIn="@layout/activity_main"
+    android:onClick="setListFooter">
 
-    <TextView
+    <DatePicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:id="@+id/logTimeDatePicker"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="pickDate"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Morgens loggen"
+        android:id="@+id/button"
+        android:layout_below="@+id/logTimeDatePicker"
+        android:layout_centerHorizontal="true"
+        android:onClick="pickDate"
+        />
+
 </RelativeLayout>
