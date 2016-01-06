@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.Date;
@@ -29,5 +30,9 @@ public class LogTimeActivity extends AppCompatActivity {
 
         TextView textHeadline = (TextView) findViewById(R.id.textHeadline);
         textHeadline.setText(dateText);
+    }
+
+    public void onLogTimeClick(View view) {
+        finish();
     }
 }
