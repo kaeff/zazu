@@ -9,11 +9,11 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="zazu.kaeff.net.zazu.LogTimeActivity"
+    tools:context="net.kaeff.zazu.LogTimeActivity"
     tools:showIn="@layout/activity_log_time">
 
     <RelativeLayout
-        tools:context="zazu.kaeff.net.zazu.MainActivity"
+        tools:context="net.kaeff.zazu.MainActivity"
         tools:showIn="@layout/activity_main"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         xmlns:android="http://schemas.android.com/apk/res/android"

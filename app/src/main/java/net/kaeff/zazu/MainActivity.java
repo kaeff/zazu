@@ -1,4 +1,4 @@
-package zazu.kaeff.net.zazu;
+package net.kaeff.zazu;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.DatePicker;
 
 import java.util.Date;
+
+import zazu.kaeff.net.zazu.R;
 
 public class MainActivity extends AppCompatActivity {
 
