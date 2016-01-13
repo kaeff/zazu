@@ -21,6 +21,10 @@
         <activity
             android:name="net.kaeff.zazu.LogTimeActivity"
             android:label="@string/title_activity_log_time"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="net.kaeff.zazu.ShowTimeLogsActivity"
+            android:label="@string/title_activity_show_time_logs"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
