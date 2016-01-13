@@ -4,12 +4,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import org.joda.time.LocalDateTime;
+import org.joda.time.format.DateTimeFormat;
 
 import java.util.Date;
 
@@ -41,6 +42,7 @@ public class LogTimeActivity extends AppCompatActivity {
 
     public void onLogTimeClick(View view) {
         saveEntry();
+        printConfirmation();
         finish();
     }
 
@@ -55,7 +57,13 @@ public class LogTimeActivity extends AppCompatActivity {
     private void saveEntry() {
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
         TimeLog timeLog = new TimeLog(getSelectedTime(), TimeLog.Type.MORNING);
-        Log.d(getLocalClassName(), "Timelog: " + timeLog.toString());
         databaseHelper.insert(timeLog);
+    }
+
+    private void printConfirmation() {
+        String confirmation = "Arbeitsbeginn um " +
+                DateTimeFormat.shortTime().print(getSelectedTime()) +
+                " eingetragen";
+        Toast.makeText(getApplicationContext(), confirmation, Toast.LENGTH_SHORT).show();
     }
 }
