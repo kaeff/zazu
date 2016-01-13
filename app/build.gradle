@@ -15,8 +15,8 @@ android {
         release {
             storeFile file("../zazu.jks")
             keyAlias "zazu"
-            storePassword System.console().readLine("\nKeystore password: ")
-            keyPassword System.console().readLine("\nKey password: ")
+            storePassword readLine("\nKeystore password: ")
+            keyPassword readLine("\nKey password: ")
         }
     }
     buildTypes {
@@ -36,4 +36,12 @@ dependencies {
 
     provided "org.projectlombok:lombok:1.12.6"
     compile 'joda-time:joda-time:2.9.1'
+}
+
+def readLine(prompt) {
+    if (System.console() != null) {
+        return System.console().readLine(prompt)
+    } else {
+        return ""
+    }
 }
