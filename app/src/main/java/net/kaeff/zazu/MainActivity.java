@@ -57,4 +57,8 @@ public class MainActivity extends AppCompatActivity {
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(0, builder.build());
     }
+
+    public void onShowTimeLogsClick(View view) {
+        startActivity(new Intent(this, ShowTimeLogsActivity.class));
+    }
 }

@@ -35,7 +35,6 @@ public class ShowTimeLogsActivity extends AppCompatActivity {
     }
 
     @Override
-
     protected void onStart() {
         super.onStart();
 
