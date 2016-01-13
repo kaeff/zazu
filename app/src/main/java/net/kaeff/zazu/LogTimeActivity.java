@@ -19,7 +19,9 @@ import zazu.kaeff.net.zazu.R;
 public class LogTimeActivity extends AppCompatActivity {
 
     public static final String EXTRA_DATE = "date";
+    public static final String EXTRA_LOG_TYPE = "log_type";
     private Date date;
+    private TimeLog.Type type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +36,14 @@ public class LogTimeActivity extends AppCompatActivity {
         super.onStart();
 
         date = (Date) getIntent().getSerializableExtra(EXTRA_DATE);
-        String dateText = DateFormat.getDateFormat(this).format(date);
+        type = (TimeLog.Type) getIntent().getSerializableExtra(EXTRA_LOG_TYPE);
+        String dateText = DateFormat.getDateFormat(this).format(this.date);
 
         TextView textHeadline = (TextView) findViewById(R.id.textHeadline);
         textHeadline.setText(dateText);
+
+        TextView textSubheadline = (TextView) findViewById(R.id.textSubheadline);
+        textSubheadline.setText(type.asHumanQuestion());
     }
 
     public void onLogTimeClick(View view) {
@@ -56,12 +62,12 @@ public class LogTimeActivity extends AppCompatActivity {
 
     private void saveEntry() {
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
-        TimeLog timeLog = new TimeLog(getSelectedTime(), TimeLog.Type.MORNING);
+        TimeLog timeLog = new TimeLog(getSelectedTime(), type);
         databaseHelper.insert(timeLog);
     }
 
     private void printConfirmation() {
-        String confirmation = "Arbeitsbeginn um " +
+        String confirmation = type.asHumanNoun() + " um " +
                 DateTimeFormat.shortTime().print(getSelectedTime()) +
                 " eingetragen";
         Toast.makeText(getApplicationContext(), confirmation, Toast.LENGTH_SHORT).show();

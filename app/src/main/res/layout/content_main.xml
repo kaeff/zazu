@@ -18,18 +18,16 @@
         android:id="@+id/logTimeDatePicker"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:onClick="pickDate"
-        />
+        android:spinnersShown="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Morgens loggen"
         android:id="@+id/button"
+        android:onClick="onLogMorningClick"
         android:layout_below="@+id/logTimeDatePicker"
-        android:layout_centerHorizontal="true"
-        android:onClick="pickDate"
-        />
+        android:layout_alignLeft="@+id/logTimeDatePicker" />
 
     <Button
         android:layout_width="wrap_content"
@@ -49,5 +47,15 @@
         android:onClick="onShowTimeLogsClick"
         android:layout_below="@+id/button2"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Abends loggen"
+        android:id="@+id/button4"
+        android:onClick="onLogEveningClick"
+        android:layout_below="@+id/logTimeDatePicker"
+        android:layout_alignRight="@+id/logTimeDatePicker"
+        android:layout_alignEnd="@+id/logTimeDatePicker" />
 
 </RelativeLayout>

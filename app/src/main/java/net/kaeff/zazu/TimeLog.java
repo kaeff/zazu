@@ -2,16 +2,32 @@ package net.kaeff.zazu;
 
 import org.joda.time.LocalDateTime;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Value;
 
 @Value
 @AllArgsConstructor(suppressConstructorProperties = true)
 public class TimeLog {
-    public static enum Type {
-        MORNING;
+    public enum Type {
+        MORNING("Arbeitsbeginn", "Wann hast Du mit der Arbeit begonnen?"),
+        EVENING("Feierabend", "Wann hast du Feierabend gemacht?")
+        ;
+
+        private String humanQuestion;
+        private String humanNoun;
+
+        Type(String humanNoun, String humanQuestion) {
+            this.humanNoun = humanNoun;
+            this.humanQuestion = humanQuestion;
+        }
+
+        public String asHumanNoun() {
+            return humanNoun;
+        }
+
+        public String asHumanQuestion() {
+            return humanQuestion;
+        }
     }
 
     LocalDateTime dateTime;

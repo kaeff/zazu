@@ -24,24 +24,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @NonNull
-    private Intent createLogTimeIntendForSelectedDate() {
+    private Intent createLogTimeIntendForSelectedDate(TimeLog.Type type) {
         DatePicker datePicker = (DatePicker) findViewById(R.id.logTimeDatePicker);
         Date date = new Date(datePicker.getCalendarView().getDate());
 
         Intent intent = new Intent(this, LogTimeActivity.class);
         intent.putExtra(LogTimeActivity.EXTRA_DATE, date);
+        intent.putExtra(LogTimeActivity.EXTRA_LOG_TYPE, type);
+
         return intent;
     }
 
-    public void pickDate(View view) {
-        startActivity(createLogTimeIntendForSelectedDate());
+    public void onLogMorningClick(View view) {
+        startActivity(createLogTimeIntendForSelectedDate(TimeLog.Type.MORNING));
+    }
+
+    public void onLogEveningClick(View view) {
+        startActivity(createLogTimeIntendForSelectedDate(TimeLog.Type.EVENING));
     }
 
     public void showNotification(View view) {
 
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         stackBuilder.addParentStack(LogTimeActivity.class);
-        stackBuilder.addNextIntent(createLogTimeIntendForSelectedDate());
+        stackBuilder.addNextIntent(createLogTimeIntendForSelectedDate(TimeLog.Type.MORNING));
         PendingIntent resultPendingIntent =
                 stackBuilder.getPendingIntent(
                         0,
