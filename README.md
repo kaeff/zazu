@@ -14,6 +14,9 @@ It gives me notification every morning / lunchtime / evening. From the notificat
 
 You need to generate a keystore with a key named `zazu` in it  and put it into the project folder under the name `zazu.jks`. See the (Signing your Application Guide)[https://developer.android.com/tools/publishing/app-signing.html#release-mode] for instructions.
 
-Once you've generated the keystore, run:
+Secrets need to be present as environment variables. Upon first use, `cp zazu.env.example zazu.env`, add your credentials, and don't check it into version control!
 
+To generate a signed APK for release, run:
+
+     source zazu.env
     ./gradlew assembleRelease

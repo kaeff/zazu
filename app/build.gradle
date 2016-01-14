@@ -15,8 +15,8 @@ android {
         release {
             storeFile file("../zazu.jks")
             keyAlias "zazu"
-            storePassword readLine("\nKeystore password: ")
-            keyPassword readLine("\nKey password: ")
+            storePassword System.getenv("STORE_PW")
+            keyPassword System.getenv("KEY_PW")
         }
     }
     buildTypes {
@@ -36,12 +36,10 @@ dependencies {
 
     provided "org.projectlombok:lombok:1.12.6"
     compile 'joda-time:joda-time:2.9.1'
+    compile 'net.hockeyapp.android:HockeySDK:3.6.2'
 }
 
-def readLine(prompt) {
-    if (System.console() != null) {
-        return System.console().readLine(prompt)
-    } else {
-        return ""
-    }
+apply plugin: 'de.felixschulze.gradle.hockeyapp'
+hockeyapp {
+    apiToken = System.getenv("HOCKEY")
 }
