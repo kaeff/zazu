@@ -48,10 +48,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public List<TimeLog> queryRecords() {
         List<TimeLog> result = new LinkedList<>();
         Cursor query = getReadableDatabase().query(ACTIVITY_LOG, new String[]{DAY, TYPE}, null, null, null, null, DAY);
-        while (query.moveToNext()) {
-            LocalDateTime dateTime = LocalDateTime.parse(query.getString(query.getColumnIndex(DAY)));
-            TimeLog.Type type = TimeLog.Type.valueOf(query.getString(query.getColumnIndex(TYPE)));
-            result.add(new TimeLog(dateTime, type));
+        try {
+            while (query.moveToNext()) {
+                LocalDateTime dateTime = LocalDateTime.parse(query.getString(query.getColumnIndex(DAY)));
+                TimeLog.Type type = TimeLog.Type.valueOf(query.getString(query.getColumnIndex(TYPE)));
+                result.add(new TimeLog(dateTime, type));
+            }
+        } finally {
+            query.close();
         }
         return result;
     }
