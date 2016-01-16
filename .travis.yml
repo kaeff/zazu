@@ -21,3 +21,5 @@ android:
     - sys-img-armeabi-v7a-android-16
 before_script:
 - cp ci/release.jks zazu.jks
+after_failure:
+- cat build/kaeff/zazu/app/build/outputs/lint-results.xml
