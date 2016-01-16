@@ -22,4 +22,4 @@ android:
 before_script:
 - cp ci/release.jks zazu.jks
 after_failure:
-- cat build/kaeff/zazu/app/build/outputs/lint-results.xml
+- cat app/build/outputs/lint-results.xml
