@@ -2,7 +2,17 @@
 
 # zazu
 
+[![Build
+Status](https://travis-ci.org/kaeff/zazu.svg?branch=master)](https://travis-ci.org/kaeff/zazu)
+
 An unobtrusive time tracking app for Android. Zazu understands my laziness. It allows me to fill out my timesheets while walking in/out of the office.
+
+## Try it out
+
+Install zazu by downloading the APK file from HockeyApp. Scan this QR code or [go to the downloads page](https://rink.hockeyapp.net/apps/d8d973e221bf47cc8b0218f1e7936944). For instructions on how to install the APK after downloading, see [How to install beta apps on Android](http://support.hockeyapp.net/kb/client-integration-android/how-to-install-beta-apps-on-android)
+
+[![HockeyApp
+link](https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Frink.hockeyapp.net%2Fapps%2Fd8d973e221bf47cc8b0218f1e7936944&chs=256x256)](https://rink.hockeyapp.net/apps/d8d973e221bf47cc8b0218f1e7936944)
 
 ## Idea
 
