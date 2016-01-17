@@ -20,6 +20,13 @@ android:
     # if you need to run emulator(s) during your tests
     - sys-img-armeabi-v7a-android-16
 before_script:
-- cp ci/release.jks zazu.jks
+  - cp ci/release.jks zazu.jks
+
+  # Emulator Management: Create, Start and Wait
+  - echo no | android create avd --force -n test -t android-19 --abi armeabi-v7a
+  - emulator -avd test -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
+
 after_failure:
 - cat app/build/outputs/lint-results.xml
