@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import net.kaeff.zazu.model.TimeLog;
+import net.kaeff.zazu.model.TimeLogType;
 
 import org.joda.time.LocalDateTime;
 
@@ -53,7 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         try {
             while (query.moveToNext()) {
                 LocalDateTime dateTime = LocalDateTime.parse(query.getString(query.getColumnIndex(DAY)));
-                TimeLog.Type type = TimeLog.Type.valueOf(query.getString(query.getColumnIndex(TYPE)));
+                TimeLogType type = TimeLogType.valueOf(query.getString(query.getColumnIndex(TYPE)));
                 result.add(new TimeLog(dateTime, type));
             }
         } finally {

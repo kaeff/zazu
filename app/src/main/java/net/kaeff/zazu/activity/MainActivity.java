@@ -13,7 +13,7 @@ import android.widget.DatePicker;
 
 import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.UpdateManager;
-import net.kaeff.zazu.model.TimeLog;
+import net.kaeff.zazu.model.TimeLogType;
 
 import java.util.Date;
 
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @NonNull
-    private Intent createLogTimeIntendForSelectedDate(TimeLog.Type type) {
+    private Intent createLogTimeIntendForSelectedDate(TimeLogType type) {
         DatePicker datePicker = (DatePicker) findViewById(R.id.logTimeDatePicker);
         Date date = new Date(datePicker.getCalendarView().getDate());
 
@@ -56,18 +56,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onLogMorningClick(View view) {
-        startActivity(createLogTimeIntendForSelectedDate(TimeLog.Type.MORNING));
+        startActivity(createLogTimeIntendForSelectedDate(TimeLogType.MORNING));
     }
 
     public void onLogEveningClick(View view) {
-        startActivity(createLogTimeIntendForSelectedDate(TimeLog.Type.EVENING));
+        startActivity(createLogTimeIntendForSelectedDate(TimeLogType.EVENING));
     }
 
     public void showNotification(View view) {
 
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         stackBuilder.addParentStack(LogTimeActivity.class);
-        stackBuilder.addNextIntent(createLogTimeIntendForSelectedDate(TimeLog.Type.MORNING));
+        stackBuilder.addNextIntent(createLogTimeIntendForSelectedDate(TimeLogType.MORNING));
         PendingIntent resultPendingIntent =
                 stackBuilder.getPendingIntent(
                         0,

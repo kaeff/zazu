@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import net.kaeff.zazu.model.TimeLogType;
 import net.kaeff.zazu.persistence.DatabaseHelper;
 import net.kaeff.zazu.model.TimeLog;
 
@@ -24,7 +25,7 @@ public class LogTimeActivity extends AppCompatActivity {
     public static final String EXTRA_DATE = "date";
     public static final String EXTRA_LOG_TYPE = "log_type";
     private Date date;
-    private TimeLog.Type type;
+    private TimeLogType type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class LogTimeActivity extends AppCompatActivity {
         super.onStart();
 
         date = (Date) getIntent().getSerializableExtra(EXTRA_DATE);
-        type = (TimeLog.Type) getIntent().getSerializableExtra(EXTRA_LOG_TYPE);
+        type = (TimeLogType) getIntent().getSerializableExtra(EXTRA_LOG_TYPE);
         String dateText = DateFormat.getDateFormat(this).format(this.date);
 
         TextView textHeadline = (TextView) findViewById(R.id.textHeadline);
