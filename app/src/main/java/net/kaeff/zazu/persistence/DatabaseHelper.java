@@ -1,10 +1,12 @@
-package net.kaeff.zazu;
+package net.kaeff.zazu.persistence;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import net.kaeff.zazu.model.TimeLog;
 
 import org.joda.time.LocalDateTime;
 
@@ -24,7 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     TYPE + " TEXT);";
 
 
-    DatabaseHelper(Context context) {
+    public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
     }

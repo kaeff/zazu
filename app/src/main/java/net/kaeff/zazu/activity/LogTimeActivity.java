@@ -1,4 +1,4 @@
-package net.kaeff.zazu;
+package net.kaeff.zazu.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import net.kaeff.zazu.persistence.DatabaseHelper;
+import net.kaeff.zazu.model.TimeLog;
 
 import org.joda.time.LocalDateTime;
 import org.joda.time.format.DateTimeFormat;

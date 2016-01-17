@@ -1,4 +1,4 @@
-package net.kaeff.zazu;
+package net.kaeff.zazu.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,7 +9,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.joda.time.LocalDateTime;
+import net.kaeff.zazu.persistence.DatabaseHelper;
+import net.kaeff.zazu.model.TimeLog;
 
 import java.util.List;
 

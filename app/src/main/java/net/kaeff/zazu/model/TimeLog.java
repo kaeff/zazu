@@ -1,4 +1,4 @@
-package net.kaeff.zazu;
+package net.kaeff.zazu.model;
 
 import org.joda.time.LocalDateTime;
 

@@ -1,4 +1,4 @@
-package net.kaeff.zazu;
+package net.kaeff.zazu.activity;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -13,6 +13,7 @@ import android.widget.DatePicker;
 
 import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.UpdateManager;
+import net.kaeff.zazu.model.TimeLog;
 
 import java.util.Date;
 
