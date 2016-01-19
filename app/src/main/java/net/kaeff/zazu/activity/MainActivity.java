@@ -13,6 +13,7 @@ import android.widget.DatePicker;
 
 import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.UpdateManager;
+import net.kaeff.zazu.activity.edit.EditTimeLogsActivity;
 import net.kaeff.zazu.model.TimeLogType;
 
 import java.util.Date;
@@ -87,4 +88,9 @@ public class MainActivity extends AppCompatActivity {
     public void onShowTimeLogsClick(View view) {
         startActivity(new Intent(this, ShowTimeLogsActivity.class));
     }
+
+    public void onEditTimeLogsClick(View view) {
+        startActivity(new Intent(this, EditTimeLogsActivity.class));
+    }
+
 }

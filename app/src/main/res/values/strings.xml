@@ -3,4 +3,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_log_time">LogTimeActivity</string>
     <string name="title_activity_show_time_logs">ShowTimeLogsActivity</string>
+    <string name="title_activity_edit_time_logs">EditTimeLogsActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>

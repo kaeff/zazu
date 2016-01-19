@@ -9,12 +9,12 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import net.kaeff.zazu.DateTimeFormats;
+import net.kaeff.zazu.model.TimeLog;
 import net.kaeff.zazu.model.TimeLogType;
 import net.kaeff.zazu.persistence.DatabaseHelper;
-import net.kaeff.zazu.model.TimeLog;
 
 import org.joda.time.LocalDateTime;
-import org.joda.time.format.DateTimeFormat;
 
 import java.util.Date;
 
@@ -72,7 +72,7 @@ public class LogTimeActivity extends AppCompatActivity {
 
     private void printConfirmation() {
         String confirmation = type.asHumanNoun() + " um " +
-                DateTimeFormat.shortTime().print(getSelectedTime()) +
+                DateTimeFormats.SHORT_TIME.print(getSelectedTime()) +
                 " eingetragen";
         Toast.makeText(getApplicationContext(), confirmation, Toast.LENGTH_SHORT).show();
     }
