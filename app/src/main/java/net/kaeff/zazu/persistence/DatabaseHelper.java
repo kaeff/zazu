@@ -50,7 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public List<TimeLog> queryRecords() {
         List<TimeLog> result = new LinkedList<>();
-        Cursor query = getReadableDatabase().query(ACTIVITY_LOG, new String[]{DAY, TYPE}, null, null, null, null, DAY);
+        Cursor query = getReadableDatabase().query(ACTIVITY_LOG, new String[]{DAY, TYPE}, null, null, null, null, DAY+" DESC    ");
         try {
             while (query.moveToNext()) {
                 LocalDateTime dateTime = LocalDateTime.parse(query.getString(query.getColumnIndex(DAY)));
