@@ -53,6 +53,6 @@ public class ShowTimeLogsActivity extends AppCompatActivity {
     }
 
     private String printTimeLog(TimeLog timeLog) {
-        return timeLog.toString();
+        return timeLog.toHumanReadable();
     }
 }
