@@ -45,6 +45,7 @@ public class ShowTimeLogsActivity extends AppCompatActivity {
 
     private void printTimeLogs(List<TimeLog> timeLogs) {
         LinearLayout timeLogsContainer = (LinearLayout) findViewById(R.id.timeLogsContainer);
+        timeLogsContainer.removeAllViews();
         for (TimeLog timeLog : timeLogs) {
             TextView textView = new TextView(this);
             textView.setText(printTimeLog(timeLog));
