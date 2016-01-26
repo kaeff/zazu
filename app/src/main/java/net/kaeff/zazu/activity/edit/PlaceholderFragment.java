@@ -6,6 +6,12 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import net.kaeff.zazu.DateTimeFormats;
+import net.kaeff.zazu.model.DayLog;
+
+import org.joda.time.Duration;
 
 import zazu.kaeff.net.zazu.R;
 
@@ -18,6 +24,7 @@ public class PlaceholderFragment extends Fragment {
      * fragment.
      */
     private static final String ARG_SECTION_NUMBER = "section_number";
+    private View rootView;
 
     public PlaceholderFragment() {
     }
@@ -37,7 +44,7 @@ public class PlaceholderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_edit_time_logs, container, false);
+        rootView = inflater.inflate(R.layout.fragment_edit_time_logs, container, false);
 
         registerTimePickerDialog(rootView.findViewById(R.id.morningTimeDisplay));
         registerTimePickerDialog(rootView.findViewById(R.id.eveningTimeDisplay));
@@ -48,10 +55,10 @@ public class PlaceholderFragment extends Fragment {
     private void registerTimePickerDialog(final View view) {
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onTouch
-                    (View v, MotionEvent event) {
+            public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     showTimePickerDialogForView();
+                    updateDayHours();
                     return true;
                 }
                 return false;
@@ -62,9 +69,24 @@ public class PlaceholderFragment extends Fragment {
                 bundle.putInt(TimePickerFragment.VIEW_ID, view.getId());
                 TimePickerFragment timePickerFragment = new TimePickerFragment();
                 timePickerFragment.setArguments(bundle);
-                timePickerFragment.show(getFragmentManager(), "timePicker"+view.getId());
+                timePickerFragment.show(getFragmentManager(), "timePicker" + view.getId());
             }
         });
+    }
+
+    private void updateDayHours() {
+        Duration minus = DayLog.parse(
+                textFromView(R.id.morningTimeDisplay),
+                textFromView(R.id.eveningTimeDisplay),
+                textFromView(R.id.breaksDisplay)
+        ).asWorkHours();
+
+        TextView dailyHoursDisplay = (TextView) rootView.findViewById(R.id.dailyHoursDisplay);
+        dailyHoursDisplay.setText(DateTimeFormats.PERIOD_FORMAT.print(minus.toPeriod()));
+    }
+
+    private String textFromView(int id) {
+        return ((TextView) rootView.findViewById(id)).getText().toString();
     }
 
 }
