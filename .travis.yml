@@ -20,7 +20,11 @@ android:
     # if you need to run emulator(s) during your tests
     - sys-img-armeabi-v7a-android-16
 before_script:
+  # Use the release keystore
   - cp ci/release.jks zazu.jks
+
+  # Use build number as the versionCode via app/build.gradle
+  - echo "buildVersionCode=$TRAVIS_BUILD_NUMBER" >> app/gradle.properties
 
   # Emulator Management: Create, Start and Wait
   - echo no | android create avd --force -n test -t android-19 --abi armeabi-v7a

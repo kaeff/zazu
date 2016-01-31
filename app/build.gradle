@@ -8,7 +8,7 @@ android {
         applicationId "kaeff.net.zazu"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 1
+        versionCode hasProperty('buildVersionCode') ? buildVersionCode : 1
         versionName "1.0"
     }
     signingConfigs {
