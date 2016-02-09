@@ -2,6 +2,7 @@ package net.kaeff.zazu.activity.edit;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -49,7 +50,22 @@ public class PlaceholderFragment extends Fragment {
         registerTimePickerDialog(rootView.findViewById(R.id.morningTimeDisplay));
         registerTimePickerDialog(rootView.findViewById(R.id.eveningTimeDisplay));
 
+        View breaksDisplay = rootView.findViewById(R.id.breaksDisplay);
+        breaksDisplay.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                updateDayHours();
+                return false;
+            }
+        });
+
         return rootView;
+    }
+
+    @Override
+    public void onStart() {
+        updateDayHours();
+        super.onStart();
     }
 
     private void registerTimePickerDialog(final View view) {
@@ -58,7 +74,6 @@ public class PlaceholderFragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     showTimePickerDialogForView();
-                    updateDayHours();
                     return true;
                 }
                 return false;
@@ -70,6 +85,12 @@ public class PlaceholderFragment extends Fragment {
                 TimePickerFragment timePickerFragment = new TimePickerFragment();
                 timePickerFragment.setArguments(bundle);
                 timePickerFragment.show(getFragmentManager(), "timePicker" + view.getId());
+                timePickerFragment.setOnDialogDismiss(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateDayHours();
+                    }
+                });
             }
         });
     }

@@ -14,8 +14,13 @@ import org.joda.time.LocalTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import lombok.Setter;
+
 public class TimePickerFragment extends DialogFragment
         implements TimePickerDialog.OnTimeSetListener {
+
+    @Setter
+    private Runnable onDialogDismiss;
 
     public static final String VIEW_ID = "viewId";
 //    public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormat.forPattern("HH:mm");
@@ -38,5 +43,14 @@ public class TimePickerFragment extends DialogFragment
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         LocalTime selectedTime = new LocalTime(hourOfDay, minute);
         getBackingView().setText(DATE_TIME_FORMATTER.print(selectedTime));
+    }
+
+    @Override
+    public void onDestroyView() {
+        if (onDialogDismiss != null) {
+            onDialogDismiss.run();
+        }
+        super.onDestroyView();
+
     }
 }
