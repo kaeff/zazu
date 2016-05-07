@@ -17,6 +17,7 @@ import net.kaeff.zazu.activity.edit.EditTimeLogsActivity;
 import net.kaeff.zazu.model.TimeLogType;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import zazu.kaeff.net.zazu.R;
 
@@ -47,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
     @NonNull
     private Intent createLogTimeIntendForSelectedDate(TimeLogType type) {
         DatePicker datePicker = (DatePicker) findViewById(R.id.logTimeDatePicker);
-        Date date = new Date(datePicker.getCalendarView().getDate());
+        Date date = new GregorianCalendar(
+                datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth()).getTime();
 
         Intent intent = new Intent(this, LogTimeActivity.class);
         intent.putExtra(LogTimeActivity.EXTRA_DATE, date);
